@@ -11,12 +11,16 @@ class WeatherSevenDaysListVC: UIViewController {
 
     @IBOutlet private weak var tableView:UITableView!
     
-    var presenter: WeatherViewToPresenterProtocol?
+    var presenter: WeatherListViewToPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         setUpTableView()
+        if let location = NKLocation.m.lastLocation {
+            NKProgress.show(inView: view, color: .clear)
+            self.presenter?.updateView(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
+        }
     }
     
     private func setUpUI() {
@@ -47,12 +51,22 @@ extension WeatherSevenDaysListVC: UITableViewDelegate, UITableViewDataSource {
         cell.data = presenter?.getWeatherDaily(index: indexPath.row)
         return cell
     }
-    
-    
 }
 
-extension WeatherSevenDaysListVC:WeatherSevenDaysListPresenterToViewProtocol {
+
+extension WeatherSevenDaysListVC: WeatherListPresenterToViewProtocol {
+    
+    func dismissActivityIndicator() {
+        NKProgress.dismiss()
+    }
+    
     func showCurrentWeather() {
-        
+        tableView.reloadData()
+    }
+    
+    func showError() {
+        let alert = UIAlertController(title: "Alert", message: "Problem Fetching Weather", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

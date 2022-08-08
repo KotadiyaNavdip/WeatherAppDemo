@@ -10,7 +10,9 @@ import UIKit
 class WeatherRouter: WeatherPresenterToRouterProtocol {
     static func createModule() -> UIViewController {
         let view = WeatherVC()
+        
         let presenter: WeatherViewToPresenterProtocol & WeatherInteractorToPresenterProtocol = WeatherPresenter()
+        
         let interactor: WeatherPresentorToInteractorProtocol = WeatherInteractor()
         let router: WeatherPresenterToRouterProtocol = WeatherRouter()
         

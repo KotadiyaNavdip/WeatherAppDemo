@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol WeatherSevenDaysListPresenterToViewProtocol: class {
-    func showCurrentWeather()
-}
-
 protocol WeatherPresenterToViewProtocol: class {
     func showCurrentWeather()
     func showError()
@@ -39,11 +35,46 @@ protocol WeatherViewToPresenterProtocol: class {
     
     func getWeatherHoursCount() -> Int
     func getWeatherHours(index:Int) -> NKWeatherCurrent?
+}
+
+protocol WeatherPresenterToRouterProtocol: class {
+    static func createModule() -> UIViewController
+}
+
+
+
+
+// Save Days list
+protocol WeatherListPresenterToViewProtocol: class {
+    func showCurrentWeather()
+    func showError()
+    func dismissActivityIndicator()
+}
+
+protocol WeatherListInteractorToPresenterProtocol: class {
+    func currentWeatherFetched()
+    func currentWeatherFetchedFailed()
+    func dismissActivityIndicator()
+}
+
+protocol WeatherListViewToPresenterProtocol: class {
+    
+    var view: WeatherListPresenterToViewProtocol? { get set }
+    var interactor: WeatherListPresentorToInteractorProtocol? { get set }
+    var router: WeatherListPresenterToRouterProtocol? { get set }
+    
+    func updateView(lat:Double, lon:Double)
     
     func getWeatherDailyCount() -> Int
     func getWeatherDaily(index:Int) -> NKWeatherDaily?
 }
 
-protocol WeatherPresenterToRouterProtocol: class {
+protocol WeatherListPresentorToInteractorProtocol: class {
+    var presenter: WeatherListInteractorToPresenterProtocol? { get set }
+    var weather: NKWeatherCodable? { get }
+    func fetchCurrentWeather(lat:Double, lon:Double)
+}
+
+protocol WeatherListPresenterToRouterProtocol: class {
     static func createModule() -> UIViewController
 }

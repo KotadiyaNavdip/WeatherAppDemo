@@ -50,7 +50,7 @@ class WeatherVC: UIViewController {
     private func checkPermission() {
         if NKLocation.m.checkPermission() {
             if presenter?.getWeather() == nil {
-                NKProgress.show(inView: view)
+                NKProgress.show(inView: view, color: .clear)
             }
             NKLocation.m.configure()
             NKLocation.m.onceUpdateLocation = { location in
@@ -76,8 +76,8 @@ class WeatherVC: UIViewController {
     
     
     @IBAction private func onClickShowSevenDays() {
-        let vc = WeatherSevenDaysListVC()
-        vc.presenter = self.presenter
+        let vc = WeatherListRouter.createModule()
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
