@@ -7,25 +7,25 @@
 
 import UIKit
 
-protocol WeatherPresenterToViewProtocol: class {
+protocol WeatherPresenterToViewProtocol: AnyObject {
     func showCurrentWeather()
     func showError()
     func dismissActivityIndicator()
 }
 
-protocol WeatherInteractorToPresenterProtocol: class {
+protocol WeatherInteractorToPresenterProtocol: AnyObject {
     func currentWeatherFetched()
     func currentWeatherFetchedFailed()
     func dismissActivityIndicator()
 }
 
-protocol WeatherPresentorToInteractorProtocol: class {
+protocol WeatherPresentorToInteractorProtocol: AnyObject {
     var presenter: WeatherInteractorToPresenterProtocol? { get set }
     var weather: NKWeatherCodable? { get set }
     func fetchCurrentWeather(lat:Double, lon:Double)
 }
 
-protocol WeatherViewToPresenterProtocol: class {
+protocol WeatherViewToPresenterProtocol: AnyObject {
     var view: WeatherPresenterToViewProtocol? { get set }
     var interactor: WeatherPresentorToInteractorProtocol? { get set }
     var router: WeatherPresenterToRouterProtocol? { get set }
@@ -37,7 +37,7 @@ protocol WeatherViewToPresenterProtocol: class {
     func getWeatherHours(index:Int) -> NKWeatherCurrent?
 }
 
-protocol WeatherPresenterToRouterProtocol: class {
+protocol WeatherPresenterToRouterProtocol: AnyObject {
     static func createModule() -> UIViewController
 }
 
@@ -45,19 +45,19 @@ protocol WeatherPresenterToRouterProtocol: class {
 
 
 // Save Days list
-protocol WeatherListPresenterToViewProtocol: class {
+protocol WeatherListPresenterToViewProtocol: AnyObject {
     func showCurrentWeather()
     func showError()
     func dismissActivityIndicator()
 }
 
-protocol WeatherListInteractorToPresenterProtocol: class {
+protocol WeatherListInteractorToPresenterProtocol: AnyObject {
     func currentWeatherFetched()
     func currentWeatherFetchedFailed()
     func dismissActivityIndicator()
 }
 
-protocol WeatherListViewToPresenterProtocol: class {
+protocol WeatherListViewToPresenterProtocol: AnyObject {
     
     var view: WeatherListPresenterToViewProtocol? { get set }
     var interactor: WeatherListPresentorToInteractorProtocol? { get set }
@@ -69,12 +69,12 @@ protocol WeatherListViewToPresenterProtocol: class {
     func getWeatherDaily(index:Int) -> NKWeatherDaily?
 }
 
-protocol WeatherListPresentorToInteractorProtocol: class {
+protocol WeatherListPresentorToInteractorProtocol: AnyObject {
     var presenter: WeatherListInteractorToPresenterProtocol? { get set }
     var weather: NKWeatherCodable? { get set }
     func fetchCurrentWeather(lat:Double, lon:Double)
 }
 
-protocol WeatherListPresenterToRouterProtocol: class {
+protocol WeatherListPresenterToRouterProtocol: AnyObject {
     static func createModule() -> UIViewController
 }

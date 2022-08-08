@@ -25,8 +25,7 @@ class WeatherListInteractor: WeatherListPresentorToInteractorProtocol {
                 case let .success(response):
                     self.weather = response
                     self.presenter?.currentWeatherFetched()
-                case let .failure(error):
-                    print(error.message)
+                case .failure( _):
                     self.presenter?.currentWeatherFetchedFailed()
                 }
             }

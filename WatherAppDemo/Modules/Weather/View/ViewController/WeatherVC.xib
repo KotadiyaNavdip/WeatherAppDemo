@@ -138,7 +138,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cn0-fI-dl7">
                     <rect key="frame" x="101.5" y="432.5" width="211.5" height="31"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="tinted" title="Allow to access your location"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Allow to access your location"/>
                     <connections>
                         <action selector="onClickAllowLocation" destination="-1" eventType="touchUpInside" id="Y3S-xt-fj9"/>
                     </connections>
