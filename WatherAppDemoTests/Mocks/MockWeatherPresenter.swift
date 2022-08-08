@@ -31,14 +31,6 @@ class MockWeatherPresenter: WeatherViewToPresenterProtocol {
         return interactor?.weather?.hourly?[index]
     }
     
-    func getWeatherDailyCount() -> Int {
-        return interactor?.weather?.daily?.count ?? 0
-    }
-    
-    func getWeatherDaily(index: Int) -> NKWeatherDaily? {
-        return interactor?.weather?.daily?[index]
-    }
-    
     var isActivityIndicatorDismissed = false
     var isCurrentWeatherFetched = false
     var isCurrentWeatherFetchedFailed = false

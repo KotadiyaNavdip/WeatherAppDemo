@@ -1,5 +1,5 @@
 //
-//  WeatherModelTests.swift
+//  WeatherListModelTests.swift
 //  WatherAppDemoTests
 //
 //  Created by Navdip Kotadiya on 08/08/22.
@@ -8,12 +8,12 @@
 import XCTest
 @testable import WatherAppDemo
 
-class WeatherModelTests: XCTestCase {
+class WeatherListModelTests: XCTestCase {
 
-    var view:WeatherVC!
-    var presenter: MockWeatherPresenter!
-    var interactor: WeatherPresentorToInteractorProtocol!
-    var router: WeatherPresenterToRouterProtocol!
+    var view:WeatherSevenDaysListVC!
+    var presenter: (WeatherListViewToPresenterProtocol & WeatherListInteractorToPresenterProtocol)!
+    var interactor: WeatherListPresentorToInteractorProtocol!
+    var router: WeatherListPresenterToRouterProtocol!
     
     let weather: NKWeatherCodable = .init(
         lat: 23.0225,
@@ -56,14 +56,32 @@ class WeatherModelTests: XCTestCase {
                         main: "Clear",
                         icon: "10a")
                 ])],
-        daily: nil)
-    
+        daily: [
+            NKWeatherDaily.init(
+                dt: 1659980790,
+                temp: NKWeatherTemp.init(min: 28, max: 34),
+                weather: [
+                    NKWeatherWeather.init(
+                        id: 800,
+                        main: "Rain",
+                        icon: "10a")
+                ]),
+            NKWeatherDaily.init(
+                dt: 1659980790,
+                temp: NKWeatherTemp.init(min: 29, max: 35),
+                weather: [
+                    NKWeatherWeather.init(
+                        id: 800,
+                        main: "Rain",
+                        icon: "10a")
+                ])
+        ] )
     
     override func setUp() {
-        view = WeatherVC()
-        presenter = MockWeatherPresenter()
-        interactor = WeatherInteractor()
-        router = WeatherRouter()
+        view = WeatherSevenDaysListVC()
+        presenter = WeatherListPresenter()
+        interactor = WeatherListInteractor()
+        router = WeatherListRouter()
         
         interactor.weather = weather
         
@@ -81,21 +99,12 @@ class WeatherModelTests: XCTestCase {
         router = nil
     }
     
-    
-    func test_getWeather() throws {
-        // When
-        interactor.weather = weather
-        
-        // Then
-        XCTAssertNotNil(presenter.getWeather)
-    }
-    
     func test_getWeatherDailyCount() throws {
         // When
         interactor.weather = weather
         
         // Then
-        XCTAssertEqual(3, presenter.getWeatherHoursCount())
+        XCTAssertEqual(2, presenter.getWeatherDailyCount())
     }
     
     func test_getWeatherHours_index() throws {
@@ -103,8 +112,7 @@ class WeatherModelTests: XCTestCase {
         interactor.weather = weather
         
         // Then
-        XCTAssertEqual(30, presenter.getWeatherHours(index: 0)?.temp)
+        XCTAssertEqual(28, presenter.getWeatherDaily(index: 0)?.temp?.min)
     }
-    
-    
+
 }

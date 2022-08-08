@@ -52,6 +52,7 @@
 		2EFF6EC528A1763F00F25DA8 /* WeatherListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF6EC428A1763F00F25DA8 /* WeatherListPresenter.swift */; };
 		2EFF6EC728A17ADF00F25DA8 /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF6EC628A17ADF00F25DA8 /* WeatherListRouter.swift */; };
 		2EFF6EC928A17B3700F25DA8 /* WeatherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF6EC828A17B3700F25DA8 /* WeatherListInteractor.swift */; };
+		2EFF6ECB28A188B100F25DA8 /* WeatherListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF6ECA28A188B100F25DA8 /* WeatherListModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		2EFF6EC428A1763F00F25DA8 /* WeatherListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListPresenter.swift; sourceTree = "<group>"; };
 		2EFF6EC628A17ADF00F25DA8 /* WeatherListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
 		2EFF6EC828A17B3700F25DA8 /* WeatherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListInteractor.swift; sourceTree = "<group>"; };
+		2EFF6ECA28A188B100F25DA8 /* WeatherListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				2E1E189E289FC73000872483 /* WatherAppDemoTests.swift */,
 				2EDE129A28A118A10039D6D2 /* Mocks */,
 				2EDE129828A10E030039D6D2 /* WeatherModelTests.swift */,
+				2EFF6ECA28A188B100F25DA8 /* WeatherListModelTests.swift */,
 			);
 			path = WatherAppDemoTests;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 			files = (
 				2EDE129928A10E030039D6D2 /* WeatherModelTests.swift in Sources */,
 				2E1E189F289FC73000872483 /* WatherAppDemoTests.swift in Sources */,
+				2EFF6ECB28A188B100F25DA8 /* WeatherListModelTests.swift in Sources */,
 				2EDE129C28A118F40039D6D2 /* MockWeatherPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

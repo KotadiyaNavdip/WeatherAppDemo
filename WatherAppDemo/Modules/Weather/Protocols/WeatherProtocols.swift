@@ -21,7 +21,7 @@ protocol WeatherInteractorToPresenterProtocol: class {
 
 protocol WeatherPresentorToInteractorProtocol: class {
     var presenter: WeatherInteractorToPresenterProtocol? { get set }
-    var weather: NKWeatherCodable? { get }
+    var weather: NKWeatherCodable? { get set }
     func fetchCurrentWeather(lat:Double, lon:Double)
 }
 
@@ -71,7 +71,7 @@ protocol WeatherListViewToPresenterProtocol: class {
 
 protocol WeatherListPresentorToInteractorProtocol: class {
     var presenter: WeatherListInteractorToPresenterProtocol? { get set }
-    var weather: NKWeatherCodable? { get }
+    var weather: NKWeatherCodable? { get set }
     func fetchCurrentWeather(lat:Double, lon:Double)
 }
 
