@@ -36,8 +36,12 @@ class WeatherModelTests: XCTestCase {
     }
     
     func test_fetchCurrentWeather_with_success() throws {
-        presenter.updateView(lat: 23.0225, lon: 72.5714)
-        XCTAssertTrue(presenter.isActivityIndicatorDismissed)
-        //XCTAssertEqual(self.interactor.weather?.lon, 72.5714)
+        interactor.fetchCurrentWeather(lat: 23.0225, lon: 72.5714)
+        XCTAssertFalse(presenter.isActivityIndicatorDismissed)
+    }
+    
+    func test_fetchCurrentWeather_with_failure() throws {
+        interactor.fetchCurrentWeather(lat: 23.0225, lon: 72.5714)
+        XCTAssertTrue(presenter.isCurrentWeatherFetchedFailed)
     }
 }
